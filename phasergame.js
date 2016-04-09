@@ -27,5 +27,5 @@ function create() {
 }
 
 function render() {
-    game.debug.text(game.time.fps || '--', 2, 14, "#00ff00");
+    game.debug.text(game.time.fps || '--', 400, 300, "#00ff00");
 }
