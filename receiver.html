@@ -16,6 +16,8 @@ limitations under the License.
 <!DOCTYPE html>
 <html>
   <head>
+      <script type="text/javascript" src="phaser.min.js"></script>
+      <script type="text/javascript" src="phasergame.js"></script>
     <style type="text/css">
 	  body {
 	    overflow:hidden;
@@ -37,26 +39,26 @@ limitations under the License.
     <title>Cast Hello Text</title>
   </head>
   <body>
-	<DIV id="message">Talk to me</DIV>
+	<!--<DIV id="message">Talk to me</DIV>-->
     <script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
     <script type="text/javascript">
       window.onload = function() {
         cast.receiver.logger.setLevelValue(0);
         window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
         console.log('Starting Receiver Manager');
-        
+
         // handler for the 'ready' event
         castReceiverManager.onReady = function(event) {
           console.log('Received Ready event: ' + JSON.stringify(event.data));
           window.castReceiverManager.setApplicationState("Application status is ready...");
         };
-        
+
         // handler for 'senderconnected' event
         castReceiverManager.onSenderConnected = function(event) {
           console.log('Received Sender Connected event: ' + event.data);
           console.log(window.castReceiverManager.getSender(event.data).userAgent);
         };
-        
+
         // handler for 'senderdisconnected' event
         castReceiverManager.onSenderDisconnected = function(event) {
           console.log('Received Sender Disconnected event: ' + event.data);
@@ -64,7 +66,7 @@ limitations under the License.
 	        window.close();
 	      }
         };
-        
+
         // handler for 'systemvolumechanged' event
         castReceiverManager.onSystemVolumeChanged = function(event) {
           console.log('Received System Volume Changed event: ' + event.data['level'] + ' ' +
@@ -90,7 +92,7 @@ limitations under the License.
         window.castReceiverManager.start({statusText: "Application is starting"});
         console.log('Receiver Manager started');
       };
-      
+
       // utility function to display the text message in the input field
       function displayText(text) {
         console.log(text);
